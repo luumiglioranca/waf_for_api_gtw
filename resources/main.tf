@@ -146,7 +146,7 @@ resource "aws_wafv2_web_acl" "waf_for_api_gateway" {
 #                                                                                                               #
 #################################################################################################################
 
-#resource "aws_wafv2_web_acl_association" "web_acl_association_1" {
-#  resource_arn = data.aws_apigatewayv2_api.waf_for_api_gateway.arn
-#  web_acl_arn  = aws_wafv2_web_acl.waf_for_api_gateway.arn
-#}
+resource "aws_wafv2_web_acl_association" "web_acl_association_1" {
+  resource_arn = data.aws_apigatewayv2_api.waf_for_api_gateway.arn
+  web_acl_arn  = aws_wafv2_web_acl.waf_for_api_gateway.arn
+}
