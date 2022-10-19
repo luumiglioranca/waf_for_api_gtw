@@ -1,0 +1,33 @@
+###########################################################################################################################################
+#
+# Provider - AWS
+#
+###########################################################################################################################################
+
+provider "aws" {
+  region  = "us-east-1"
+  profile = ""
+
+#Se necessário aloque o assume_role de sua conta principal.
+  assume_role {
+    role_arn = "arn:aws:iam::${local.account_id}:role/OrganizationAccountAccessRole"
+  }
+}
+
+terraform {
+  backend "s3" {
+    profile                     = ""
+    bucket                      = ""
+    key                         = ""
+    region                      = "us-east-1"
+    encrypt                     = true
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+  }
+}
+
+locals {
+
+  account_id = ""
+
+}
